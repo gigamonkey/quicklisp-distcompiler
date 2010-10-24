@@ -1,0 +1,30 @@
+#!/bin/sh
+
+here=`pwd`
+archives=$here/archives
+all=$archives/all.txt
+current=$archives/current.txt
+
+mkdir -p $archives
+rm -f $current
+
+last_change () {
+    cd $f;
+    v=`git log -1 --format="%ci" | cut -f1 -d' '`
+    n=`basename $f`
+    prefix="$n-$v"
+    archive="${prefix}.tgz"
+    if [ -e "$archives/$archive" ] ; then
+        echo "$archive up to date."
+    else
+        echo "Creating $archive."
+        git archive --format=tar --prefix=${prefix}/ HEAD | (cd $archives; gzip > $archive)
+        echo "$n $v" >> $all
+    fi
+    echo "$n $v" >> $current
+}
+
+
+for f in ~/lisp/monkeylib/*; do
+    last_change
+done
