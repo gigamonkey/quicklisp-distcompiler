@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#
+# Find git repos under monkeylib that have been updated since a given
+# date or which have uncomitted changes.
+#
+
 date=$1
 
 for f in ~/lisp/monkeylib/*; do
