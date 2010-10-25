@@ -72,7 +72,7 @@ name-version.tgz should exist in archives/."
 (defun write-project-systems (project version)
   (let ((prefix (format nil "~a-~a" project version)))
     (walk-directory 
-     (directory-name prefix)
+     (unpacked-dir prefix)
      (lambda (file) 
        (when (string-equal (pathname-type file) "asd")
          (write-systems/asd-file project file))))))
@@ -94,6 +94,8 @@ name-version.tgz should exist in archives/."
         ((file-exists-p expected-dir) expected-dir)
         (t (error "~a didn't unpack into expected dir ~a" tgz expected-dir))))))
        
+(defun unpacked-dir (prefix)
+  (merge-pathnames (pathname-as-directory prefix) (pathname-as-directory "unpacked")))
 
 (defun tmp-tar (tgz dir)
   (ensure-directories-exist
@@ -116,8 +118,7 @@ name-version.tgz should exist in archives/."
 (defun archive-name (prefix)
   (make-pathname :directory '(:relative "archives") :name prefix :type "tgz"))
 
-(defun directory-name (prefix)
-  (merge-pathnames (pathname-as-directory prefix) (pathname-as-directory "software")))
+
 
 (defun find-asd-files (project-dir)
   (let ((files ())
