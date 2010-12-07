@@ -1,13 +1,8 @@
-(in-package :cl-user)
+;;
+;; Copyright (c) 2010, Peter Seibel. All rights reserved.
+;;
 
-(defpackage :distmaker 
-  (:use :cl
-        :com.gigamonkeys.pathnames
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.macro-utilities)
-  (:export :compile-dist))
-
-(in-package :distmaker)
+(in-package :gigamonkey-distcompiler)
 
 (defmacro with-dist-file-output ((name version what &key verbose) &body body)
   (with-gensyms (file)
@@ -106,8 +101,6 @@ name-version.tgz should exist in archives/."
 
 (defun top-level-dir (tgz dir)
   (merge-pathnames (pathname-as-directory (pathname-name tgz)) dir))
-
-
 
 (defun file-md5 (file)
   (ironclad:byte-array-to-hex-string (ironclad:digest-file :md5 file)))
