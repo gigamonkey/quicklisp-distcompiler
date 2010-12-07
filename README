@@ -1,10 +1,5 @@
-Mostly Common Lisp code for building Quicklisp "dists" with some
-helper shell scripts.
-
-This is currently tied to my personal setup: I use update-archives to
-generate .tgz archives out of the individual git archives of my own
-libraries.
-
-The Lisp function COMPILE-DIST takes the name of a file containing a
-DEFINE-DIST form (see monkeylib.dist for an example) and then builds
-the three files required by Quicklisp in an appropriate directory.
+Common Lisp code for building Quicklisp "dists". The Lisp function
+COMPILE-DIST takes the name of a file containing a DEFINE-DIST form
+(see monkeylib.dist in my monkeydist project for an example) and then
+builds the three files required by Quicklisp in an appropriate
+directory.
