@@ -50,7 +50,7 @@ name-version.tgz should exist in archives/."
   (let* ((prefix (format nil "~a-~a" project version))
          (archive-file (archive-name prefix))
          (code-directory (unpack-tgz archive-file "unpacked/"))
-         (url (format nil "~a/archives/~a" base-url archive-file))
+         (url (format nil "~a/~a" base-url archive-file))
          (size (file-bytes archive-file))
          (md5 (file-md5 archive-file))
          (sha1 (file-sha1 archive-file))
