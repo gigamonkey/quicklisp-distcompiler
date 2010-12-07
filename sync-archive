@@ -1,7 +1,0 @@
-#!/bin/bash
-
-ssh_host=peter@gigamonkeys.com
-quicklisp_root=/var/www/www.gigamonkeys.com/quicklisp
-dir=archives
-
-rsync --archive --progress ./$dir/ $ssh_host:$quicklisp_root/$dir/

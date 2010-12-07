@@ -1,8 +1,0 @@
-#!/bin/bash
-
-version=$1
-ssh_host=peter@gigamonkeys.com
-quicklisp_root=/var/www/www.gigamonkeys.com/quicklisp
-dist=monkeylib
-
-rsync --archive --progress ./$dist/$version/ $ssh_host:$quicklisp_root/$dist/$version/
