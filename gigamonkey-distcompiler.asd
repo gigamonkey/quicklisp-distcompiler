@@ -7,4 +7,7 @@
   ((:file "packages")
    (:file "tarhash" :depends-on ("packages"))
    (:file "distcompiler" :depends-on ("packages" "tarhash")))
-  :depends-on (:ironclad))
+  :depends-on (:ironclad
+               :com.gigamonkeys.pathnames
+               :com.gigamonkeys.utilities
+               :com.gigamonkeys.macro-utilities))
