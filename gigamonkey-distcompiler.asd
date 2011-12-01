@@ -4,6 +4,7 @@
 
 (defsystem gigamonkey-distcompiler
   :components
+  :description "Tool for generating Quicklisp dists."
   ((:file "packages")
    (:file "tarhash" :depends-on ("packages"))
    (:file "distcompiler" :depends-on ("packages" "tarhash")))
